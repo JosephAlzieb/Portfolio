@@ -1,0 +1,108 @@
+{
+  "nav": {
+    "about": "About",
+    "skills": "Skills",
+    "services": "Services",
+    "projects": "Projects",
+    "certifications": "Certifications",
+    "contact": "Contact"
+  },
+  "hero": {
+    "greeting": "Hi, I'm",
+    "roles": "Fullstack Software Engineer",
+    "subtitle": "I build robust, scalable software solutions — from backend APIs to beautiful frontends and mobile apps.",
+    "cta_contact": "Get in Touch",
+    "cta_cv": "Download CV"
+  },
+  "about": {
+    "heading": "About Me",
+    "p1": "I'm a passionate Fullstack Software Engineer based in Düsseldorf. I currently work at GEBIT Solutions GmbH, where I design and develop software solutions for complex business needs.",
+    "p2": "I hold a degree from Heinrich Heine University Düsseldorf and continuously expand my expertise through professional certifications in Java, Spring Boot, Vaadin, Flutter, and other modern technologies.",
+    "p3": "I love turning complex requirements into clean, maintainable code. Whether it's building a Spring Boot microservice, a Flutter mobile app, or a responsive web application — I bring dedication and care to every project.",
+    "location": "Location",
+    "company": "Company",
+    "education": "Education",
+    "languages": "Languages"
+  },
+  "skills": {
+    "heading": "Tech Stack & Skills",
+    "subtitle": "Technologies I work with on a daily basis.",
+    "categories": {
+      "backend": "Backend",
+      "frontend": "Frontend",
+      "database": "Databases",
+      "testing": "Testing",
+      "cloud": "Cloud & DevOps",
+      "tool": "Tools"
+    }
+  },
+  "services": {
+    "heading": "Services",
+    "subtitle": "What I can do for you.",
+    "web": {
+      "title": "Web Development",
+      "description": "Modern, responsive web applications using React, Next.js, Vaadin, Thymeleaf, and Symfony. From landing pages to complex enterprise portals."
+    },
+    "mobile": {
+      "title": "Mobile App Development",
+      "description": "Cross-platform mobile applications built with Flutter and Dart. Beautiful UIs with native performance for iOS and Android."
+    },
+    "backend": {
+      "title": "Backend & API Development",
+      "description": "Robust REST APIs and microservices with Java, Spring Boot, and PostgreSQL. Scalable architecture designed for production workloads."
+    },
+    "fullstack": {
+      "title": "Fullstack Engineering",
+      "description": "End-to-end solutions covering frontend, backend, database, and deployment. I deliver complete products from concept to production."
+    }
+  },
+  "projects": {
+    "heading": "Projects",
+    "subtitle": "A selection of projects I've built.",
+    "view_code": "View Code",
+    "view_live": "Live Demo",
+    "crypto_tracker": {
+      "description": "A cryptocurrency watchlist app to track current prices of various cryptocurrencies in real-time."
+    },
+    "crypto_wallet": {
+      "description": "A crypto wallet application for storing and managing cryptocurrencies, backed by Firebase."
+    },
+    "facebook_ui": {
+      "description": "A faithful recreation of the Facebook user interface built with Flutter."
+    },
+    "meal_app": {
+      "description": "A restaurant app showcasing dishes with their recipes — an idea for how restaurants can present their menu digitally."
+    },
+    "products": {
+      "description": "A product management system for registering and managing products with a clean Java backend."
+    },
+    "portfolio": {
+      "description": "This portfolio website — built with Next.js, TypeScript, Tailwind CSS, and Framer Motion."
+    }
+  },
+  "certifications": {
+    "heading": "Certifications",
+    "subtitle": "Professional credentials and continuous learning.",
+    "view_credential": "View Credential"
+  },
+  "contact": {
+    "heading": "Get in Touch",
+    "subtitle": "Have a project in mind or just want to say hi? Feel free to reach out.",
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "send": "Send Message",
+    "sending": "Sending...",
+    "success_title": "Message Sent!",
+    "success_message": "Thank you for reaching out. I'll get back to you as soon as possible.",
+    "send_another": "Send Another Message",
+    "error_message": "Something went wrong. Please try again.",
+    "name_placeholder": "Your name",
+    "email_placeholder": "your@email.com",
+    "message_placeholder": "Tell me about your project..."
+  },
+  "footer": {
+    "rights": "All rights reserved.",
+    "built_with": "Built with Next.js, Tailwind CSS & Framer Motion"
+  }
+}
