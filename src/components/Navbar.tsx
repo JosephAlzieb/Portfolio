@@ -64,9 +64,9 @@ export default function Navbar() {
           : "bg-transparent"}`}
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-20">
+          <div className={`flex items-center justify-between transition-all duration-300 ${isScrolled ? "h-14" : "h-16"}`}>
           {/* Logo */}
-          <a href="#" className="text-2xl font-bold gradient-text">
+          <a href="#" className={`font-bold gradient-text transition-all duration-300 ${isScrolled ? "text-lg" : "text-xl"}`}>
             JA
           </a>
 
