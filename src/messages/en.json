@@ -64,8 +64,8 @@
     "crypto_tracker": {
       "description": "A cryptocurrency watchlist app to track current prices of various cryptocurrencies in real-time."
     },
-    "crypto_wallet": {
-      "description": "A crypto wallet application for storing and managing cryptocurrencies, backed by Firebase."
+    "freeze_tag": {
+      "description": "An algorithmic study of the Freeze Tag Problem — exploring approximation algorithms and heuristics for waking frozen robots in optimal time."
     },
     "facebook_ui": {
       "description": "A faithful recreation of the Facebook user interface built with Flutter."
@@ -73,8 +73,8 @@
     "meal_app": {
       "description": "A restaurant app showcasing dishes with their recipes — an idea for how restaurants can present their menu digitally."
     },
-    "products": {
-      "description": "A product management system for registering and managing products with a clean Java backend."
+    "checkin": {
+      "description": "A web application that allows students to register their planned absences during a mandatory attendance internship."
     },
     "portfolio": {
       "description": "This portfolio website — built with Next.js, TypeScript, Tailwind CSS, and Framer Motion."

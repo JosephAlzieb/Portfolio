@@ -49,6 +49,7 @@ export const skills: Skill[] = [
   // Frontend
   { name: "Vaadin", icon: "vaadin", category: "frontend" },
   { name: "React", icon: "react", category: "frontend" },
+  { name: "HTML", icon: "html5", category: "frontend" },
   { name: "CSS", icon: "css3", category: "frontend" },
   { name: "Flutter", icon: "flutter", category: "frontend" },
 
@@ -66,11 +67,12 @@ export const skills: Skill[] = [
 
   // Cloud & DevOps
   { name: "Microsoft Azure", icon: "azure", category: "cloud" },
-  { name: "Docker", icon: "docker", category: "cloud" },
 
 
   // Tools
+  { name: "Docker", icon: "docker", category: "tool" },
   { name: "Podman", icon: "podman", category: "tool" },
+  { name: "Gradle", icon: "gradle", category: "tool" },
   { name: "Maven", icon: "maven", category: "tool" },
   { name: "Git", icon: "git", category: "tool" },
   { name: "Scrum", icon: "scrum", category: "tool" },
@@ -94,10 +96,10 @@ export const projects: Project[] = [
     githubUrl: "https://github.com/JosephAlzieb/Crypto-Price-Tracker",
   },
   {
-    name: "Crypto Wallet App",
-    descriptionKey: "projects.crypto_wallet.description",
-    techStack: ["Dart", "Flutter", "Firebase"],
-    githubUrl: "https://github.com/JosephAlzieb/Crypto_Wallet_App",
+    name: "Freeze Tag Problem",
+    descriptionKey: "projects.freeze_tag.description",
+    techStack: ["Java"],
+    githubUrl: "https://github.com/JosephAlzieb/Frezze_Tag_Problem",
   },
   {
     name: "Facebook UI Clone",
@@ -112,10 +114,10 @@ export const projects: Project[] = [
     githubUrl: "https://github.com/JosephAlzieb/meal_app",
   },
   {
-    name: "Product Management",
-    descriptionKey: "projects.products.description",
-    techStack: ["Java", "Spring Boot"],
-    githubUrl: "https://github.com/JosephAlzieb/products",
+    name: "CheckIn",
+    descriptionKey: "projects.checkin.description",
+    techStack: ["Java", "Spring Boot", "Docker"],
+    githubUrl: "https://github.com/JosephAlzieb/checkin",
   },
   {
     name: "Portfolio Website",
