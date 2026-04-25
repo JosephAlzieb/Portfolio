@@ -11,8 +11,7 @@
     "greeting": "Hi, I'm",
     "roles": "Fullstack Software Engineer",
     "subtitle": "I build robust, scalable software solutions — from backend APIs to beautiful frontends and mobile apps.",
-    "cta_contact": "Get in Touch",
-    "cta_cv": "Download CV"
+    "cta_contact": "Get in Touch"
   },
   "about": {
     "heading": "About Me",
@@ -103,10 +102,16 @@
     "error_message": "Something went wrong. Please try again.",
     "name_placeholder": "Your name",
     "email_placeholder": "your@email.com",
-    "message_placeholder": "Tell me about your project..."
+    "message_placeholder": "Tell me about your project...",
+    "validation_name_required": "Please enter your name.",
+    "validation_name_min": "Name must be at least 2 characters.",
+    "validation_email_required": "Please enter your email address.",
+    "validation_email_invalid": "Please enter a valid email address.",
+    "validation_message_required": "Please enter a message.",
+    "validation_message_min": "Message must be at least 10 characters."
   },
   "footer": {
     "rights": "All rights reserved.",
-    "built_with": "Built with Next.js, Tailwind CSS & Framer Motion"
+    "built_with": ""
   }
 }

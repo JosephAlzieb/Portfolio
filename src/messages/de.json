@@ -11,8 +11,7 @@
     "greeting": "Hi, ich bin",
     "roles": "Fullstack Software Engineer",
     "subtitle": "Ich entwickle robuste, skalierbare Softwarelösungen — von Backend-APIs über schöne Frontends bis hin zu mobilen Apps.",
-    "cta_contact": "Kontakt aufnehmen",
-    "cta_cv": "Lebenslauf herunterladen"
+    "cta_contact": "Kontakt aufnehmen"
   },
   "about": {
     "heading": "Über mich",
@@ -103,10 +102,16 @@
     "error_message": "Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut.",
     "name_placeholder": "Ihr Name",
     "email_placeholder": "ihre@email.de",
-    "message_placeholder": "Erzählen Sie mir von Ihrem Projekt..."
+    "message_placeholder": "Erzählen Sie mir von Ihrem Projekt...",
+    "validation_name_required": "Bitte geben Sie Ihren Namen ein.",
+    "validation_name_min": "Der Name muss mindestens 2 Zeichen lang sein.",
+    "validation_email_required": "Bitte geben Sie Ihre E-Mail-Adresse ein.",
+    "validation_email_invalid": "Bitte geben Sie eine gültige E-Mail-Adresse ein.",
+    "validation_message_required": "Bitte geben Sie eine Nachricht ein.",
+    "validation_message_min": "Die Nachricht muss mindestens 10 Zeichen lang sein."
   },
   "footer": {
     "rights": "Alle Rechte vorbehalten.",
-    "built_with": "Erstellt mit Next.js, Tailwind CSS & Framer Motion"
+    "built_with": ""
   }
 }
