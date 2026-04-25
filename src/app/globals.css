@@ -3,15 +3,16 @@
 /* ─── Custom Theme Variables ──────────────────────────────────────────────── */
 
 :root {
-  --background: #ffffff;
+  --background: #f8fafc;
   --foreground: #0f172a;
-  --card: #f8fafc;
-  --card-border: #e2e8f0;
-  --primary: #3b82f6;
-  --primary-dark: #2563eb;
-  --secondary: #8b5cf6;
-  --muted: #64748b;
-  --accent: #06b6d4;
+  --card: #ffffff;
+  --card-border: #cbd5e1;
+  --primary: #2563eb;
+  --primary-dark: #1d4ed8;
+  --secondary: #7c3aed;
+  --muted: #475569;
+  --accent: #0891b2;
+  --surface: #eef2f7;
 }
 
 [data-theme="dark"] {
@@ -24,6 +25,7 @@
   --secondary: #a78bfa;
   --muted: #94a3b8;
   --accent: #22d3ee;
+  --surface: #151f32;
 }
 
 @theme inline {
@@ -36,6 +38,7 @@
   --color-secondary: var(--secondary);
   --color-muted: var(--muted);
   --color-accent: var(--accent);
+  --color-surface: var(--surface);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
@@ -49,11 +52,7 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* ─── Smooth Scrolling ────────────────────────────────────────────────────── */
-
-html {
-  scroll-behavior: smooth;
-}
+/* Smooth scrolling is handled via data-scroll-behavior on <html> */
 
 /* ─── Selection ───────────────────────────────────────────────────────────── */
 

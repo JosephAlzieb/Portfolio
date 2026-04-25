@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
@@ -32,9 +33,21 @@ export default function Hero() {
     <section className="relative min-h-screen flex items-center justify-center px-4 overflow-hidden">
       {/* Background gradient orbs */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-40 -left-40 w-80 h-80 bg-primary/20 rounded-full blur-[120px]" />
-        <div className="absolute -bottom-40 -right-40 w-80 h-80 bg-secondary/20 rounded-full blur-[120px]" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-accent/10 rounded-full blur-[120px]" />
+        <motion.div
+          animate={{ x: [0, 30, -20, 0], y: [0, -25, 15, 0] }}
+          transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute -top-40 -left-40 w-80 h-80 bg-primary/20 rounded-full blur-[120px]"
+        />
+        <motion.div
+          animate={{ x: [0, -25, 20, 0], y: [0, 30, -20, 0] }}
+          transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute -bottom-40 -right-40 w-80 h-80 bg-secondary/20 rounded-full blur-[120px]"
+        />
+        <motion.div
+          animate={{ scale: [1, 1.15, 0.9, 1] }}
+          transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-accent/10 rounded-full blur-[120px]"
+        />
       </div>
 
       <div className="relative z-10 text-center max-w-3xl">
@@ -45,11 +58,12 @@ export default function Hero() {
           transition={{ duration: 0.5, type: "spring" }}
           className="mb-6"
         >
-          <img
-            src="me.jpg"
+          <Image
+            src="/me.jpg"
             alt={personalInfo.name}
             width={120}
             height={120}
+            priority
             className="w-28 h-28 rounded-full mx-auto border-4 border-primary/50 shadow-lg shadow-primary/20"
           />
         </motion.div>
@@ -134,7 +148,10 @@ export default function Hero() {
           transition={{ duration: 1.5, repeat: Infinity }}
           className="w-6 h-10 border-2 border-muted rounded-full flex justify-center"
         >
-          <motion.div className="w-1.5 h-1.5 bg-muted rounded-full mt-2" />
+          <motion.div className="w-1.5 h-1.5 bg-muted rounded-full mt-2"
+            animate={{ y: [0, 12, 0], opacity: [1, 0.3, 1] }}
+            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+          />
         </motion.div>
       </motion.div>
     </section>

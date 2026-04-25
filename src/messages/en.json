@@ -22,7 +22,9 @@
     "location": "Location",
     "company": "Company",
     "education": "Education",
-    "languages": "Languages"
+    "languages": "Languages",
+    "readMore": "Read more",
+    "readLess": "Show less"
   },
   "skills": {
     "heading": "Tech Stack & Skills",
@@ -61,6 +63,8 @@
     "subtitle": "A selection of projects I've built.",
     "view_code": "View Code",
     "view_live": "Live Demo",
+    "showAll": "Show all projects",
+    "showLess": "Show less",
     "crypto_tracker": {
       "description": "A cryptocurrency watchlist app to track current prices of various cryptocurrencies in real-time."
     },

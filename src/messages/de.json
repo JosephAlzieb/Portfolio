@@ -22,7 +22,9 @@
     "location": "Standort",
     "company": "Unternehmen",
     "education": "Ausbildung",
-    "languages": "Sprachen"
+    "languages": "Sprachen",
+    "readMore": "Weiterlesen",
+    "readLess": "Weniger anzeigen"
   },
   "skills": {
     "heading": "Tech Stack & Skills",
@@ -61,6 +63,8 @@
     "subtitle": "Eine Auswahl meiner Projekte.",
     "view_code": "Code ansehen",
     "view_live": "Live Demo",
+    "showAll": "Alle Projekte anzeigen",
+    "showLess": "Weniger anzeigen",
     "crypto_tracker": {
       "description": "Eine Kryptowährungs-Watchlist-App zur Echtzeit-Verfolgung aktueller Preise verschiedener Kryptowährungen."
     },

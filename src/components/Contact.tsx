@@ -43,7 +43,7 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="py-20 px-4 bg-card/50">
+    <section id="contact" className="py-20 px-4 bg-background">
       <div className="max-w-2xl mx-auto">
         <SectionHeading heading={t("heading")} subtitle={t("subtitle")} />
 

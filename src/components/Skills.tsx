@@ -4,6 +4,7 @@ import { useTranslations } from "next-intl";
 import { skills, type Skill } from "@/lib/data";
 import { motion } from "framer-motion";
 import SectionHeading from "./SectionHeading";
+import MobileSwipeCarousel from "./MobileSwipeCarousel";
 import {
   FaJava, FaDocker, FaGitAlt, FaReact,
 } from "react-icons/fa";
@@ -75,7 +76,8 @@ function SkillChip({ skill, index }: { skill: Skill; index: number }) {
       transition={{ duration: 0.3, delay: index * 0.05 }}
       viewport={{ once: true }}
       whileHover={{ scale: 1.08, y: -2 }}
-      className="flex items-center gap-2 px-3 py-2 rounded-lg bg-background/60 border border-card-border hover:border-primary/50 hover:bg-primary/5 transition-colors duration-200 cursor-default"
+      whileTap={{ scale: 0.95 }}
+      className="flex items-center gap-2 px-3 py-2 rounded-lg bg-card border border-card-border hover:border-primary/50 hover:bg-primary/5 transition-colors duration-200 cursor-default"
     >
       <span className="text-lg text-muted group-hover:text-primary transition-colors">
         {iconMap[skill.icon] ?? <span className="text-xs font-bold">{skill.name[0]}</span>}
@@ -85,7 +87,35 @@ function SkillChip({ skill, index }: { skill: Skill; index: number }) {
   );
 }
 
-/** Category card containing all skills for that category */
+/** Category card content (shared between desktop and mobile) */
+function CategoryCardContent({
+  category,
+  label,
+  items,
+}: {
+  category: string;
+  label: string;
+  items: Skill[];
+}) {
+  return (
+    <>
+      <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+      <div className="relative flex items-center gap-3 mb-5">
+        <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-primary/10 text-primary group-hover:bg-primary/20 transition-colors duration-300">
+          {categoryIcons[category]}
+        </div>
+        <h3 className="text-lg font-bold text-foreground">{label}</h3>
+      </div>
+      <div className="relative flex flex-wrap gap-2">
+        {items.map((skill, i) => (
+          <SkillChip key={skill.name} skill={skill} index={i} />
+        ))}
+      </div>
+    </>
+  );
+}
+
+/** Desktop: Category card with scroll animation */
 function CategoryCard({
   category,
   label,
@@ -105,29 +135,14 @@ function CategoryCard({
       viewport={{ once: true }}
       className="group relative rounded-2xl bg-card border border-card-border hover:border-primary/40 transition-all duration-300 hover:shadow-xl hover:shadow-primary/10 p-6 flex flex-col"
     >
-      {/* Subtle gradient overlay on hover */}
-      <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
-
-      {/* Category header */}
-      <div className="relative flex items-center gap-3 mb-5">
-        <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-primary/10 text-primary group-hover:bg-primary/20 transition-colors duration-300">
-          {categoryIcons[category]}
-        </div>
-        <h3 className="text-lg font-bold text-foreground">{label}</h3>
-      </div>
-
-      {/* Skills */}
-      <div className="relative flex flex-wrap gap-2">
-        {items.map((skill, i) => (
-          <SkillChip key={skill.name} skill={skill} index={i} />
-        ))}
-      </div>
+      <CategoryCardContent category={category} label={label} items={items} />
     </motion.div>
   );
 }
 
 /**
- * Skills / Tech Stack section — 6 category cards in a 3×2 grid.
+ * Skills / Tech Stack section
+ * Desktop: 3×2 grid | Mobile: swipeable card carousel
  */
 export default function Skills() {
   const t = useTranslations("skills");
@@ -140,12 +155,27 @@ export default function Skills() {
     }))
     .filter((row) => row.items.length > 0);
 
+  const carouselItems = groupedRows.map((row) => ({
+    key: row.category,
+    peekIcon: categoryIcons[row.category],
+    content: (
+      <div className="group relative h-full">
+        <CategoryCardContent
+          category={row.category}
+          label={row.label}
+          items={row.items}
+        />
+      </div>
+    ),
+  }));
+
   return (
-    <section id="skills" className="py-20 bg-card/30">
+    <section id="skills" className="py-20 bg-background">
       <div className="max-w-6xl mx-auto px-4">
         <SectionHeading heading={t("heading")} subtitle={t("subtitle")} />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        {/* Desktop grid */}
+        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-5">
           {groupedRows.map((row, i) => (
             <CategoryCard
               key={row.category}
@@ -155,6 +185,11 @@ export default function Skills() {
               index={i}
             />
           ))}
+        </div>
+
+        {/* Mobile swipeable carousel */}
+        <div className="md:hidden">
+          <MobileSwipeCarousel items={carouselItems} height={280} />
         </div>
       </div>
     </section>
