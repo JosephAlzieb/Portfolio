@@ -1,10 +1,9 @@
-"use client";
-
 import { socialLinks } from "@/lib/data";
 import { FiGithub, FiLinkedin } from "react-icons/fi";
 
 /**
  * Reusable social links (GitHub + LinkedIn).
+ * Server component — no client JS needed.
  */
 export default function SocialLinks({
   size = 20,

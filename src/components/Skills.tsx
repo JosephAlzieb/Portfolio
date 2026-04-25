@@ -67,14 +67,13 @@ const categoryIcons: Record<string, React.ReactNode> = {
 
 const categories = ["frontend", "backend", "database", "testing", "tool", "cloud"] as const;
 
-/** Individual skill chip inside a card */
+/** Individual skill chip inside a card — no per-chip IntersectionObserver */
 function SkillChip({ skill, index }: { skill: Skill; index: number }) {
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.8 }}
-      whileInView={{ opacity: 1, scale: 1 }}
+      animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.3, delay: index * 0.05 }}
-      viewport={{ once: true }}
       whileHover={{ scale: 1.08, y: -2 }}
       whileTap={{ scale: 0.95 }}
       className="flex items-center gap-2 px-3 py-2 rounded-lg bg-card border border-card-border hover:border-primary/50 hover:bg-primary/5 transition-colors duration-200 cursor-default"

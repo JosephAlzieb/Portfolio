@@ -1,8 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { useState, useEffect, useRef } from "react";
+import { motion, useInView } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { personalInfo } from "@/lib/data";
 import { FiMail } from "react-icons/fi";
@@ -18,6 +18,9 @@ export default function Hero() {
   const [text, setText] = useState("");
   const [done, setDone] = useState(false);
 
+  const sectionRef = useRef<HTMLElement>(null);
+  const isInView = useInView(sectionRef, { margin: "100px" });
+
   useEffect(() => {
     if (done) return;
     if (text.length < role.length) {
@@ -30,24 +33,34 @@ export default function Hero() {
     }
   }, [text, done, role]);
 
+  const orbAnimation1 = isInView
+    ? { x: [0, 30, -20, 0], y: [0, -25, 15, 0] }
+    : { x: 0, y: 0 };
+  const orbAnimation2 = isInView
+    ? { x: [0, -25, 20, 0], y: [0, 30, -20, 0] }
+    : { x: 0, y: 0 };
+  const orbAnimation3 = isInView
+    ? { scale: [1, 1.15, 0.9, 1] }
+    : { scale: 1 };
+
   return (
-    <section className="relative min-h-screen flex items-center px-4 overflow-hidden">
-      {/* Background gradient orbs */}
+    <section ref={sectionRef} className="relative min-h-screen flex items-center px-4 overflow-hidden">
+      {/* Background gradient orbs — reduced blur on mobile */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
-          animate={{ x: [0, 30, -20, 0], y: [0, -25, 15, 0] }}
+          animate={orbAnimation1}
           transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute -top-40 -left-40 w-80 h-80 bg-primary/20 rounded-full blur-[120px]"
+          className="absolute -top-40 -left-40 w-80 h-80 bg-primary/20 rounded-full blur-[60px] md:blur-[120px]"
         />
         <motion.div
-          animate={{ x: [0, -25, 20, 0], y: [0, 30, -20, 0] }}
+          animate={orbAnimation2}
           transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute -bottom-40 -right-40 w-80 h-80 bg-secondary/20 rounded-full blur-[120px]"
+          className="absolute -bottom-40 -right-40 w-80 h-80 bg-secondary/20 rounded-full blur-[60px] md:blur-[120px]"
         />
         <motion.div
-          animate={{ scale: [1, 1.15, 0.9, 1] }}
+          animate={orbAnimation3}
           transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-accent/10 rounded-full blur-[120px]"
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-accent/10 rounded-full blur-[60px] md:blur-[120px]"
         />
         {/* Dot grid pattern */}
         <div
@@ -140,9 +153,9 @@ export default function Hero() {
             transition={{ duration: 0.6, type: "spring", delay: 0.1 }}
             className="relative order-1 shrink-0"
           >
-            {/* Outer glow ring */}
+            {/* Outer glow ring — pauses when out of view */}
             <motion.div
-              animate={{ rotate: 360 }}
+              animate={isInView ? { rotate: 360 } : { rotate: 0 }}
               transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
               className="absolute -inset-3 rounded-full"
               style={{
@@ -163,7 +176,7 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Scroll indicator */}
+      {/* Scroll indicator — pauses when out of view */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -171,12 +184,12 @@ export default function Hero() {
         className="absolute bottom-8 left-1/2 -translate-x-1/2"
       >
         <motion.div
-          animate={{ y: [0, 8, 0] }}
+          animate={isInView ? { y: [0, 8, 0] } : { y: 0 }}
           transition={{ duration: 1.5, repeat: Infinity }}
           className="w-6 h-10 border-2 border-muted/40 rounded-full flex justify-center"
         >
           <motion.div className="w-1.5 h-1.5 bg-muted rounded-full mt-2"
-            animate={{ y: [0, 12, 0], opacity: [1, 0.3, 1] }}
+            animate={isInView ? { y: [0, 12, 0], opacity: [1, 0.3, 1] } : { y: 0, opacity: 1 }}
             transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
           />
         </motion.div>

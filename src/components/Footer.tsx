@@ -1,14 +1,13 @@
-"use client";
-
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 import { personalInfo } from "@/lib/data";
 import SocialLinks from "./SocialLinks";
 
 /**
- * Footer with gradient top border, social links, built-with, and copyright.
+ * Footer with gradient top border, social links, and copyright.
+ * Server component — no client JS needed.
  */
-export default function Footer() {
-  const t = useTranslations("footer");
+export default async function Footer() {
+  const t = await getTranslations("footer");
 
   return (
     <footer className="relative pt-10 pb-8 px-4">
