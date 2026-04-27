@@ -3,6 +3,7 @@ import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Skills from "@/components/Skills";
 import Services from "@/components/Services";
+import WorkProcess from "@/components/WorkProcess";
 import Projects from "@/components/Projects";
 import Certifications from "@/components/Certifications";
 import Contact from "@/components/Contact";
@@ -23,13 +24,15 @@ export default async function HomePage({
       <SectionDivider />
       <About />
       <SectionDivider />
-      <Skills />
-      <SectionDivider />
       <Services />
       <SectionDivider />
-      <Projects />
+      <WorkProcess />
+      <SectionDivider />
+      <Skills />
       <SectionDivider />
       <Certifications />
+      <SectionDivider />
+      <Projects />
       <SectionDivider />
       <Contact />
       <Footer />

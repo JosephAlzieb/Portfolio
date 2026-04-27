@@ -216,9 +216,10 @@ export const certifications: Certification[] = [
 
 export const navItems = [
   { labelKey: "nav.about", href: "#about" },
-  { labelKey: "nav.skills", href: "#skills" },
   { labelKey: "nav.services", href: "#services" },
-  { labelKey: "nav.projects", href: "#projects" },
+  { labelKey: "nav.workProcess", href: "#work-process" },
+  { labelKey: "nav.skills", href: "#skills" },
   { labelKey: "nav.certifications", href: "#certifications" },
+  { labelKey: "nav.projects", href: "#projects" },
   { labelKey: "nav.contact", href: "#contact" },
 ] as const;

@@ -87,7 +87,7 @@ export default function Projects() {
   const hasMore = hiddenProjects.length > 0;
 
   return (
-    <section id="projects" className="py-20 px-4 bg-background">
+    <section id="projects" className="py-20 px-4 bg-surface">
       <div className="max-w-6xl mx-auto">
         <SectionHeading heading={t("heading")} subtitle={t("subtitle")} />
 

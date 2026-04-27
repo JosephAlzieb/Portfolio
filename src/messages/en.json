@@ -3,6 +3,7 @@
     "about": "About",
     "skills": "Skills",
     "services": "Services",
+    "workProcess": "Process",
     "projects": "Projects",
     "certifications": "Certifications",
     "contact": "Contact"
@@ -45,16 +46,33 @@
       "description": "Modern, responsive web applications using React, Next.js, Vaadin, Thymeleaf, and Symfony. From landing pages to complex enterprise portals."
     },
     "mobile": {
-      "title": "Mobile App Development",
+      "title": "Mobile Apps",
       "description": "Cross-platform mobile applications built with Flutter and Dart. Beautiful UIs with native performance for iOS and Android."
     },
     "backend": {
-      "title": "Backend & API Development",
+      "title": "Backend & APIs",
       "description": "Robust REST APIs and microservices with Java, Spring Boot, and PostgreSQL. Scalable architecture designed for production workloads."
     },
     "fullstack": {
       "title": "Fullstack Engineering",
       "description": "End-to-end solutions covering frontend, backend, database, and deployment. I deliver complete products from concept to production."
+    }
+  },
+  "workProcess": {
+    "heading": "My Work Process",
+    "subtitlePre": "From idea to solution",
+    "subtitleHighlight": "turning your vision into software.",
+    "understand": {
+      "title": "Understanding Your Needs",
+      "description": "I learn your goals and challenges to craft a solution that truly fits."
+    },
+    "develop": {
+      "title": "Development & Implementation",
+      "description": "Clean code, modern tech, iterative feedback — until it's right."
+    },
+    "deliver": {
+      "title": "Delivery & Support",
+      "description": "On-time delivery with ongoing support to keep things running smoothly."
     }
   },
   "projects": {

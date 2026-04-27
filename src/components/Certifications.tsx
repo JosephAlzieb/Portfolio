@@ -117,7 +117,7 @@ export default function Certifications() {
   }));
 
   return (
-    <section id="certifications" className="py-20 px-4 bg-surface">
+    <section id="certifications" className="py-20 px-4 bg-background">
       <div className="max-w-6xl mx-auto">
         <SectionHeading heading={t("heading")} subtitle={t("subtitle")} />
 

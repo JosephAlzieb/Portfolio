@@ -23,7 +23,7 @@ export default function About() {
   ];
 
   return (
-    <section id="about" className="py-20 px-4 bg-surface">
+    <section id="about" className="py-20 px-4 bg-background">
       <div className="max-w-6xl mx-auto">
         <AnimatedSection>
           <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12 gradient-text">

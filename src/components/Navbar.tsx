@@ -28,25 +28,25 @@ export default function Navbar() {
   // Scroll spy – track which section is in view
   useEffect(() => {
     const sectionIds = navItems.map((item) => item.href.replace("#", ""));
-    const observers: IntersectionObserver[] = [];
 
-    sectionIds.forEach((id) => {
-      const el = document.getElementById(id);
-      if (!el) return;
+    const handleScrollSpy = () => {
+      const viewportMiddle = window.scrollY + window.innerHeight * 0.4;
+      let current = "";
 
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) {
-            setActiveSection(id);
-          }
-        },
-        { rootMargin: "-40% 0px -55% 0px" }
-      );
-      observer.observe(el);
-      observers.push(observer);
-    });
+      for (const id of sectionIds) {
+        const el = document.getElementById(id);
+        if (!el) continue;
+        const top = el.getBoundingClientRect().top + window.scrollY;
+        if (top <= viewportMiddle) {
+          current = id;
+        }
+      }
+      setActiveSection(current);
+    };
 
-    return () => observers.forEach((o) => o.disconnect());
+    handleScrollSpy();
+    window.addEventListener("scroll", handleScrollSpy, { passive: true });
+    return () => window.removeEventListener("scroll", handleScrollSpy);
   }, []);
 
   const handleNavClick = useCallback(() => {

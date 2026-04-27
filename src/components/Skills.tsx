@@ -169,7 +169,7 @@ export default function Skills() {
   }));
 
   return (
-    <section id="skills" className="py-20 bg-background">
+    <section id="skills" className="py-20 bg-surface">
       <div className="max-w-6xl mx-auto px-4">
         <SectionHeading heading={t("heading")} subtitle={t("subtitle")} />
 
