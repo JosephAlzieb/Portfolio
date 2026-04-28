@@ -28,7 +28,7 @@ export default function Services() {
   const isInView = useInView(ref, { once: true, margin: "-60px" });
 
   return (
-    <section id="services" className="py-24 px-4 bg-surface relative overflow-hidden">
+    <section id="services" className="py-24 px-4 bg-background relative overflow-hidden">
       {/* Subtle background accent */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-[120px]" />

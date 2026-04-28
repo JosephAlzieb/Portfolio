@@ -59,7 +59,7 @@ export default function WorkProcess() {
   const steps = ["understand", "develop", "deliver"] as const;
 
   return (
-    <section id="work-process" className="py-28 px-4 bg-background relative overflow-hidden">
+    <section id="work-process" className="py-28 px-4 bg-surface relative overflow-hidden">
       {/* Background — subtle diagonal lines */}
       <div
         className="absolute inset-0 opacity-[0.012] pointer-events-none"

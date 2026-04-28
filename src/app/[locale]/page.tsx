@@ -24,11 +24,11 @@ export default async function HomePage({
       <SectionDivider />
       <About />
       <SectionDivider />
+      <Skills />
+      <SectionDivider />
       <Services />
       <SectionDivider />
       <WorkProcess />
-      <SectionDivider />
-      <Skills />
       <SectionDivider />
       <Certifications />
       <SectionDivider />

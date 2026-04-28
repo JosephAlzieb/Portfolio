@@ -176,24 +176,22 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Scroll indicator — pauses when out of view */}
+      {/* Scroll indicator */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+        className="absolute bottom-3 left-1/2 -translate-x-1/2"
       >
-        <motion.div
-          animate={isInView ? { y: [0, 8, 0] } : { y: 0 }}
-          transition={{ duration: 1.5, repeat: Infinity }}
-          className="w-6 h-10 border-2 border-muted/40 rounded-full flex justify-center"
-        >
-          <motion.div className="w-1.5 h-1.5 bg-muted rounded-full mt-2"
-            animate={isInView ? { y: [0, 12, 0], opacity: [1, 0.3, 1] } : { y: 0, opacity: 1 }}
-            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+        <div className="w-5 h-8 rounded-full border border-muted/30 flex justify-center p-1">
+          <motion.div
+            className="w-1 h-1 rounded-full bg-gradient-to-b from-primary to-secondary"
+            animate={{ y: [0, 14, 0], opacity: [1, 0.2, 1], scale: [1, 0.6, 1] }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
           />
-        </motion.div>
+        </div>
       </motion.div>
+
     </section>
   );
 }

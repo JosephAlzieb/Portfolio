@@ -68,7 +68,7 @@ function ProjectCard({
 
         {/* Content */}
         <div className="flex flex-col flex-1 p-5 sm:p-6 -mt-2">
-          <h3 className="text-lg font-bold text-foreground mb-2 group-hover:text-primary transition-colors duration-300">
+          <h3 className="text-base font-bold text-foreground mb-2 group-hover:text-primary transition-colors duration-300">
             {project.name}
           </h3>
 
@@ -94,7 +94,7 @@ function ProjectCard({
               href={project.githubUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 text-sm text-muted hover:text-primary transition-colors duration-300 group/link"
+              className="flex items-center gap-1.5 text-sm font-semibold text-primary bg-primary/10 px-3 py-1.5 rounded-full border border-primary/20 hover:bg-primary/20 transition-all duration-300 group/link"
             >
               <FiGithub size={15} className="group-hover/link:scale-110 transition-transform" />
               {t("view_code")}

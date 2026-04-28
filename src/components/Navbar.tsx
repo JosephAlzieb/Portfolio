@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTranslations } from "next-intl";
+import Image from "next/image";
 import { navItems } from "@/lib/data";
 import ThemeToggle from "./ThemeToggle";
 import LanguageSwitcher from "./LanguageSwitcher";
@@ -66,8 +67,47 @@ export default function Navbar() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className={`flex items-center justify-between transition-all duration-300 ${isScrolled ? "h-14" : "h-16"}`}>
           {/* Logo */}
-          <a href="#" className={`font-bold gradient-text transition-all duration-300 ${isScrolled ? "text-lg" : "text-xl"}`}>
-            JA
+          <a href="#" className="relative flex items-center group">
+            <AnimatePresence mode="wait">
+              {isScrolled ? (
+                <motion.div
+                  key="avatar"
+                  initial={{ scale: 0, rotate: -180, opacity: 0 }}
+                  animate={{ scale: 1, rotate: 0, opacity: 1 }}
+                  exit={{ scale: 0, rotate: 180, opacity: 0 }}
+                  transition={{ type: "spring", stiffness: 260, damping: 18 }}
+                  className="relative"
+                  whileHover={{ scale: 1.15 }}
+                  whileTap={{ scale: 0.9 }}
+                >
+                  <Image
+                    src="/me.jpg"
+                    alt="JA"
+                    width={32}
+                    height={32}
+                    className="w-8 h-8 rounded-full object-cover border-2 border-primary/40 shadow-md shadow-primary/20"
+                  />
+                  <span className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 bg-green-400 rounded-full border-2 border-background" />
+                </motion.div>
+              ) : (
+                <motion.span
+                  key="text"
+                  className="inline-block gradient-text font-bold text-xl"
+                  initial={{ scale: 0, rotate: 180, opacity: 0 }}
+                  animate={{ scale: 1, rotate: 0, opacity: 1 }}
+                  exit={{ scale: 0, rotate: -180, opacity: 0 }}
+                  transition={{ type: "spring", stiffness: 260, damping: 18 }}
+                  whileHover={{
+                    scale: [1, 1.2, 0.95, 1.1],
+                    rotate: [0, -6, 6, 0],
+                    transition: { duration: 0.5 },
+                  }}
+                  whileTap={{ scale: 0.85 }}
+                >
+                  JA
+                </motion.span>
+              )}
+            </AnimatePresence>
           </a>
 
           {/* Desktop nav */}

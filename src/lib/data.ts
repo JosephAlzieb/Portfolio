@@ -137,10 +137,22 @@ export type Certification = {
 
 export const certifications: Certification[] = [
   {
-    name: "Claude 101",
+    name: "Introduction to Model Context Protocol",
     issuer: "Anthropic Education",
     date: "Apr 2026",
-    credentialUrl: "https://verify.skilljar.com/c/nvgxq5u7x2do",
+    credentialUrl: "https://verify.skilljar.com/c/zkk8hyy54ecu",
+  },
+  {
+    name: "Building with the Claude API",
+    issuer: "Anthropic Education",
+    date: "Apr 2026",
+    credentialUrl: "https://verify.skilljar.com/c/umduhp4huinj",
+  },
+  {
+    name: "Claude Code in Action",
+    issuer: "Anthropic Education",
+    date: "Apr 2026",
+    credentialUrl: "https://verify.skilljar.com/c/ncb6etwg3t38",
   },
   {
     name: "Introduction to Claude Cowork",
@@ -149,10 +161,16 @@ export const certifications: Certification[] = [
     credentialUrl: "https://verify.skilljar.com/c/7zb7ut9x67so",
   },
   {
-    name: "Claude Code in Action",
+    name: "AI Fluency for Educators",
     issuer: "Anthropic Education",
     date: "Apr 2026",
-    credentialUrl: "https://verify.skilljar.com/c/ncb6etwg3t38",
+    credentialUrl: "https://verify.skilljar.com/c/ttircuu86udb",
+  },
+  {
+    name: "Claude 101",
+    issuer: "Anthropic Education",
+    date: "Apr 2026",
+    credentialUrl: "https://verify.skilljar.com/c/nvgxq5u7x2do",
   },
   {
     name: "Certified Vaadin 24 Developer",
