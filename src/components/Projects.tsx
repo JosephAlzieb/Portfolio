@@ -6,12 +6,21 @@ import { useTranslations } from "next-intl";
 import { projects } from "@/lib/data";
 import AnimatedSection from "./AnimatedSection";
 import SectionHeading from "./SectionHeading";
-import { FiGithub, FiExternalLink, FiChevronDown, FiChevronUp } from "react-icons/fi";
+import { FiGithub, FiExternalLink, FiChevronDown, FiChevronUp, FiFolder } from "react-icons/fi";
 
 /** Number of project cards visible on mobile before expanding */
 const MOBILE_VISIBLE_COUNT = 2;
 
-/** A single project card (shared between desktop and mobile) */
+const cardAccents = [
+  "from-primary to-blue-400",
+  "from-secondary to-purple-400",
+  "from-accent to-cyan-400",
+  "from-primary to-secondary",
+  "from-secondary to-accent",
+  "from-accent to-primary",
+];
+
+/** A single project card — case-study style with diagonal accent bar */
 function ProjectCard({
   project,
   index,
@@ -21,53 +30,87 @@ function ProjectCard({
   index: number;
   t: ReturnType<typeof useTranslations<"projects">>;
 }) {
+  const accent = cardAccents[index % cardAccents.length];
+
   return (
     <AnimatedSection key={project.name} delay={index * 0.1}>
       <motion.div
-        whileTap={{ scale: 0.98 }}
-        className="group h-full flex flex-col p-6 rounded-xl bg-card border border-card-border hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5 hover:-translate-y-1"
+        whileHover={{ y: -6 }}
+        transition={{ type: "spring", stiffness: 300, damping: 25 }}
+        className="group h-full flex flex-col rounded-2xl bg-card/70 backdrop-blur-sm border border-card-border/50 hover:border-primary/30 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/10 overflow-hidden"
       >
-        <h3 className="text-lg font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
-          {project.name}
-        </h3>
-        <p className="text-sm text-muted mb-4 flex-1 leading-relaxed">
-          {t(project.descriptionKey.replace("projects.", ""))}
-        </p>
+        {/* Top accent bar with project number */}
+        <div className="relative h-24 overflow-hidden">
+          {/* Gradient background */}
+          <div className={`absolute inset-0 bg-gradient-to-br ${accent} opacity-[0.08] group-hover:opacity-[0.15] transition-opacity duration-500`} />
 
-        {/* Tech tags */}
-        <div className="flex flex-wrap gap-2 mb-4">
-          {project.techStack.map((tech) => (
-            <span
-              key={tech}
-              className="text-xs px-2 py-1 rounded-md bg-primary/10 text-primary border border-primary/20"
-            >
-              {tech}
+          {/* Diagonal stripe pattern */}
+          <div
+            className="absolute inset-0 opacity-[0.04]"
+            style={{
+              backgroundImage: `repeating-linear-gradient(135deg, var(--foreground) 0, var(--foreground) 1px, transparent 1px, transparent 12px)`,
+            }}
+          />
+
+          {/* Project number */}
+          <div className="absolute top-3 left-5 flex items-center gap-2">
+            <FiFolder className={`size-4 text-foreground/30`} />
+            <span className="text-xs font-mono text-foreground/30 tracking-wider">
+              PROJECT_{String(index + 1).padStart(2, "0")}
             </span>
-          ))}
+          </div>
+
+          {/* Large decorative number */}
+          <div className="absolute -bottom-4 right-4 text-[72px] font-black text-foreground/[0.03] leading-none select-none">
+            {String(index + 1).padStart(2, "0")}
+          </div>
         </div>
 
-        {/* Links */}
-        <div className="flex gap-3">
-          <a
-            href={project.githubUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-1.5 text-sm text-muted hover:text-primary transition-colors"
-          >
-            <FiGithub size={16} />
-            {t("view_code")}
-          </a>
-          {project.liveUrl && (
+        {/* Content */}
+        <div className="flex flex-col flex-1 p-5 sm:p-6 -mt-2">
+          <h3 className="text-lg font-bold text-foreground mb-2 group-hover:text-primary transition-colors duration-300">
+            {project.name}
+          </h3>
+
+          <p className="text-sm text-muted mb-5 flex-1 leading-relaxed">
+            {t(project.descriptionKey.replace("projects.", ""))}
+          </p>
+
+          {/* Tech tags — pill style */}
+          <div className="flex flex-wrap gap-1.5 mb-5">
+            {project.techStack.map((tech) => (
+              <span
+                key={tech}
+                className="text-[11px] px-2.5 py-1 rounded-full bg-primary/8 text-primary/80 border border-primary/15 font-medium"
+              >
+                {tech}
+              </span>
+            ))}
+          </div>
+
+          {/* Links — separated by a subtle divider */}
+          <div className="flex gap-4 pt-3 border-t border-card-border/30">
             <a
-              href={project.liveUrl}
+              href={project.githubUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 text-sm text-muted hover:text-primary transition-colors"
+              className="flex items-center gap-1.5 text-sm text-muted hover:text-primary transition-colors duration-300 group/link"
             >
-              <FiExternalLink size={16} />
-              {t("view_live")}
+              <FiGithub size={15} className="group-hover/link:scale-110 transition-transform" />
+              {t("view_code")}
             </a>
-          )}
+            {project.liveUrl && (
+              <a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1.5 text-sm text-muted hover:text-primary transition-colors duration-300 group/link"
+              >
+                <FiExternalLink size={15} className="group-hover/link:scale-110 transition-transform" />
+                {t("view_live")}
+              </a>
+            )}
+          </div>
         </div>
       </motion.div>
     </AnimatedSection>
@@ -75,8 +118,8 @@ function ProjectCard({
 }
 
 /**
- * Projects section showing selected GitHub projects as cards.
- * Desktop: full grid | Mobile: 2 visible + "Show all" expand button
+ * Projects section — Magazine case-study layout with diagonal accent headers,
+ * project numbering, and distinctive card designs.
  */
 export default function Projects() {
   const t = useTranslations("projects");
@@ -87,8 +130,12 @@ export default function Projects() {
   const hasMore = hiddenProjects.length > 0;
 
   return (
-    <section id="projects" className="py-20 px-4 bg-surface">
-      <div className="max-w-6xl mx-auto">
+    <section id="projects" className="py-28 px-4 bg-surface relative overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-secondary/[0.03] rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-primary/[0.03] rounded-full blur-[100px] pointer-events-none" />
+
+      <div className="max-w-6xl mx-auto relative z-10">
         <SectionHeading heading={t("heading")} subtitle={t("subtitle")} />
 
         {/* Desktop: full grid */}
@@ -133,7 +180,7 @@ export default function Projects() {
 
               <motion.button
                 onClick={() => setExpanded(!expanded)}
-                className="mt-5 mx-auto flex items-center gap-2 px-5 py-2.5 rounded-full bg-primary/10 border border-primary/30 text-primary text-sm font-medium hover:bg-primary/20 transition-colors"
+                className="mt-6 mx-auto flex items-center gap-2 px-6 py-2.5 rounded-full bg-card border border-card-border/60 text-foreground text-sm font-medium hover:border-primary/40 hover:text-primary transition-all duration-300"
                 whileTap={{ scale: 0.95 }}
               >
                 {expanded ? t("showLess") : t("showAll")}

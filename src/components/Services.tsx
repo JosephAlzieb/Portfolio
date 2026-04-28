@@ -70,7 +70,7 @@ export default function Services() {
                     </div>
 
                     {/* Title */}
-                    <h3 className="text-sm sm:text-lg font-bold text-foreground mb-1.5 sm:mb-2 group-hover:text-primary transition-colors duration-300">
+                    <h3 className="text-xs sm:text-lg font-bold text-foreground mb-1.5 sm:mb-2 group-hover:text-primary transition-colors duration-300">
                       {t(`${key}.title`)}
                     </h3>
 
@@ -78,7 +78,7 @@ export default function Services() {
                     <div className={`h-0.5 w-6 sm:w-8 rounded-full bg-gradient-to-r ${colors.number} mb-2 sm:mb-3 group-hover:w-12 transition-all duration-300`} />
 
                     {/* Description */}
-                    <p className="text-xs sm:text-sm text-muted leading-relaxed">
+                    <p className="text-[11px] sm:text-sm text-muted leading-relaxed">
                       {t(`${key}.description`)}
                     </p>
                   </div>

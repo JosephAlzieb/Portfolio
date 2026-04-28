@@ -15,6 +15,12 @@ const issuerIcons: Record<string, React.ElementType> = {
   Udemy: SiUdemy,
 };
 
+const issuerAccents: Record<string, { gradient: string; bg: string; border: string }> = {
+  "Anthropic Education": { gradient: "from-orange-400 to-amber-500", bg: "bg-orange-500/10", border: "border-orange-500/20" },
+  Vaadin: { gradient: "from-cyan-400 to-blue-500", bg: "bg-cyan-500/10", border: "border-cyan-500/20" },
+  Udemy: { gradient: "from-purple-400 to-violet-500", bg: "bg-purple-500/10", border: "border-purple-500/20" },
+};
+
 function IssuerIcon({ issuer, size }: { issuer: string; size: number }) {
   const Icon = issuerIcons[issuer];
   return Icon ? <Icon size={size} /> : <FiAward size={size} />;
@@ -34,30 +40,38 @@ function groupByIssuer(certs: typeof certifications) {
   return groups;
 }
 
-/** Content for a single cert entry inside a group card */
+/** Content for a single cert entry */
 function CertEntry({
   cert,
   viewLabel,
+  index,
 }: {
   cert: (typeof certifications)[number];
   viewLabel: string;
+  index: number;
 }) {
+  const accent = issuerAccents[cert.issuer] ?? issuerAccents["Udemy"];
+
   return (
-    <div className="flex items-start gap-2.5">
-      <div className="text-primary mt-0.5 shrink-0">
-        <FiAward size={16} />
+    <div className="group/cert relative flex items-start gap-3 py-3 px-3 -mx-3 rounded-xl hover:bg-card/50 transition-all duration-300">
+      {/* Rank badge */}
+      <div className={`flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-lg ${accent.bg} ${accent.border} border`}>
+        <span className="text-[10px] font-bold text-foreground/60">
+          {String(index + 1).padStart(2, "0")}
+        </span>
       </div>
-      <div className="min-w-0">
-        <h4 className="text-sm font-medium text-foreground leading-snug">
+
+      <div className="min-w-0 flex-1">
+        <h4 className="text-sm font-medium text-foreground leading-snug group-hover/cert:text-primary transition-colors duration-300">
           {cert.name}
         </h4>
-        <p className="text-[11px] text-muted">{cert.date}</p>
+        <p className="text-[11px] text-muted mt-0.5">{cert.date}</p>
         {cert.credentialUrl && (
           <a
             href={cert.credentialUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1 text-[11px] text-primary hover:text-primary-dark mt-0.5 transition-colors"
+            className="inline-flex items-center gap-1 text-[11px] text-primary hover:text-primary-dark mt-1 transition-colors"
           >
             <FiExternalLink size={11} />
             {viewLabel}
@@ -78,17 +92,27 @@ function CertGroupContent({
   certs: typeof certifications;
   viewLabel: string;
 }) {
+  const accent = issuerAccents[issuer] ?? issuerAccents["Udemy"];
+
   return (
     <>
-      <div className="flex items-center gap-3 mb-4">
-        <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-primary/10 text-primary">
-          <IssuerIcon issuer={issuer} size={20} />
+      {/* Header with metallic gradient bar */}
+      <div className="relative mb-4 shrink-0">
+        <div className={`absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r ${accent.gradient} rounded-t-xl opacity-60`} />
+        <div className="flex items-center gap-3 pt-4">
+          <div className={`flex items-center justify-center w-11 h-11 rounded-xl ${accent.bg} ${accent.border} border`}>
+            <IssuerIcon issuer={issuer} size={20} />
+          </div>
+          <div>
+            <h3 className="text-base font-bold text-foreground">{issuer}</h3>
+            <p className="text-[11px] text-muted font-mono">{certs.length} credentials</p>
+          </div>
         </div>
-        <h3 className="text-base font-bold text-foreground">{issuer}</h3>
       </div>
-      <div className="space-y-3">
-        {certs.map((cert) => (
-          <CertEntry key={cert.name} cert={cert} viewLabel={viewLabel} />
+
+      <div className="divide-y divide-card-border/30 overflow-y-auto overflow-x-hidden min-h-0 flex-1">
+        {certs.map((cert, i) => (
+          <CertEntry key={cert.name} cert={cert} viewLabel={viewLabel} index={i} />
         ))}
       </div>
     </>
@@ -96,13 +120,21 @@ function CertGroupContent({
 }
 
 /**
- * Certifications section displaying professional credentials.
- * Desktop: 3-column grid (flat) | Mobile: swipeable carousel grouped by issuer
+ * Certifications section — Trophy-shelf aesthetic with issuer branding,
+ * metallic gradient accents, and numbered badge entries.
+ * Desktop: grouped by issuer in columns | Mobile: swipeable carousel
  */
 export default function Certifications() {
   const t = useTranslations("certifications");
   const viewLabel = t("view_credential");
-  const groups = groupByIssuer(certifications);
+  const rawGroups = groupByIssuer(certifications);
+  // Display order: Anthropic, Udemy, Vaadin (Udemy in the middle)
+  const desiredOrder = ["Anthropic Education", "Udemy", "Vaadin"];
+  const groups = [...rawGroups].sort((a, b) => {
+    const ai = desiredOrder.indexOf(a.issuer);
+    const bi = desiredOrder.indexOf(b.issuer);
+    return (ai === -1 ? 99 : ai) - (bi === -1 ? 99 : bi);
+  });
 
   const carouselItems = groups.map((group) => ({
     key: group.issuer,
@@ -117,39 +149,23 @@ export default function Certifications() {
   }));
 
   return (
-    <section id="certifications" className="py-20 px-4 bg-background">
-      <div className="max-w-6xl mx-auto">
+    <section id="certifications" className="py-28 px-4 bg-background relative overflow-hidden">
+      {/* Decorative trophy glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-primary/[0.02] rounded-full blur-[120px] pointer-events-none" />
+
+      <div className="max-w-6xl mx-auto relative z-10">
         <SectionHeading heading={t("heading")} subtitle={t("subtitle")} />
 
-        {/* Desktop: full flat grid */}
-        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {certifications.map((cert, i) => (
-            <AnimatedSection key={cert.name} delay={i * 0.05}>
-              <div className="group p-5 rounded-xl bg-card border border-card-border hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5 h-full">
-                <div className="flex items-start gap-3">
-                  <div className="text-primary mt-0.5 shrink-0">
-                    <FiAward size={20} />
-                  </div>
-                  <div className="min-w-0">
-                    <h3 className="text-sm font-semibold text-foreground leading-snug mb-1">
-                      {cert.name}
-                    </h3>
-                    <p className="text-xs text-muted">
-                      {cert.issuer} &middot; {cert.date}
-                    </p>
-                    {cert.credentialUrl && (
-                      <a
-                        href={cert.credentialUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1 text-xs text-primary hover:text-primary-dark mt-2 transition-colors"
-                      >
-                        <FiExternalLink size={12} />
-                        {viewLabel}
-                      </a>
-                    )}
-                  </div>
-                </div>
+        {/* Desktop: grouped by issuer */}
+        <div className="hidden md:grid md:grid-cols-3 gap-6">
+          {groups.map((group, i) => (
+            <AnimatedSection key={group.issuer} delay={i * 0.1}>
+              <div className="relative h-full max-h-[420px] flex flex-col p-5 rounded-2xl bg-card/60 backdrop-blur-sm border border-card-border/50 hover:border-primary/30 transition-all duration-500 hover:shadow-xl hover:shadow-primary/5 overflow-hidden">
+                <CertGroupContent
+                  issuer={group.issuer}
+                  certs={group.certs}
+                  viewLabel={viewLabel}
+                />
               </div>
             </AnimatedSection>
           ))}
