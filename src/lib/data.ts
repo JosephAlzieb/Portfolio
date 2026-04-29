@@ -137,6 +137,12 @@ export type Certification = {
 
 export const certifications: Certification[] = [
   {
+    name: "Claude with Amazon Bedrock",
+    issuer: "Anthropic Education",
+    date: "Apr 2026",
+    credentialUrl: "https://verify.skilljar.com/c/hsbxy736i9cx",
+  },
+  {
     name: "Introduction to Subagents",
     issuer: "Anthropic Education",
     date: "Apr 2026",
