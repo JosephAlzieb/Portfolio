@@ -137,6 +137,24 @@ export type Certification = {
 
 export const certifications: Certification[] = [
   {
+    name: "Introduction to Subagents",
+    issuer: "Anthropic Education",
+    date: "Apr 2026",
+    credentialUrl: "https://verify.skilljar.com/c/679b34rd8bkv",
+  },
+  {
+    name: "Introduction to Agent Skills",
+    issuer: "Anthropic Education",
+    date: "Apr 2026",
+    credentialUrl: "https://verify.skilljar.com/c/kzv8oqmcieps",
+  },
+  {
+    name: "Model Context Protocol: Advanced Topics",
+    issuer: "Anthropic Education",
+    date: "Apr 2026",
+    credentialUrl: "https://verify.skilljar.com/c/dy5pwf7dh7cw",
+  },
+  {
     name: "Introduction to Model Context Protocol",
     issuer: "Anthropic Education",
     date: "Apr 2026",
@@ -234,9 +252,9 @@ export const certifications: Certification[] = [
 
 export const navItems = [
   { labelKey: "nav.about", href: "#about" },
+  { labelKey: "nav.skills", href: "#skills" },
   { labelKey: "nav.services", href: "#services" },
   { labelKey: "nav.workProcess", href: "#work-process" },
-  { labelKey: "nav.skills", href: "#skills" },
   { labelKey: "nav.certifications", href: "#certifications" },
   { labelKey: "nav.projects", href: "#projects" },
   { labelKey: "nav.contact", href: "#contact" },
