@@ -76,11 +76,11 @@ export const skills: Skill[] = [
   // AI & LLM
   { name: "Claude", icon: "claude", category: "ai" },
   { name: "Claude API", icon: "claudeapi", category: "ai" },
+  { name: "OpenAI", icon: "openai", category: "ai" },
   { name: "MCP", icon: "mcp", category: "ai" },
-  { name: "Prompt Engineering", icon: "prompt", category: "ai" },
   { name: "AI Agents", icon: "agents", category: "ai" },
   { name: "Embeddings", icon: "embeddings", category: "ai" },
-  { name: "OpenAI", icon: "openai", category: "ai" },
+  { name: "Prompt Engineering", icon: "prompt", category: "ai" },
 ];
 
 // ─── Projects ────────────────────────────────────────────────────────────────
