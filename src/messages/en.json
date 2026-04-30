@@ -11,7 +11,7 @@
   "hero": {
     "greeting": "Hi, I'm",
     "roles": "Fullstack Software Engineer",
-    "subtitle": "I build robust, scalable software solutions — from backend APIs to beautiful frontends and mobile apps.",
+    "subtitle": "I build robust, scalable software solutions — from backend APIs to beautiful frontends, mobile apps, and AI-powered integrations.",
     "cta_contact": "Get in Touch"
   },
   "about": {
@@ -35,18 +35,18 @@
       "database": "Databases",
       "testing": "Testing",
       "cloud": "Cloud & DevOps",
-      "tool": "Tools"
+      "ai": "AI & LLM"
     }
   },
   "services": {
     "heading": "Services",
     "subtitle": "What I can do for you.",
     "web": {
-      "title": "Web Development",
+      "title": "Web Applications",
       "description": "Modern, responsive web applications using React, Next.js, Vaadin, Thymeleaf, and Symfony. From landing pages to complex enterprise portals."
     },
     "mobile": {
-      "title": "Mobile Apps",
+      "title": "Mobile Applications",
       "description": "Cross-platform mobile applications built with Flutter and Dart. Beautiful UIs with native performance for iOS and Android."
     },
     "backend": {
@@ -56,6 +56,10 @@
     "fullstack": {
       "title": "Fullstack Engineering",
       "description": "End-to-end solutions covering frontend, backend, database, and deployment. I deliver complete products from concept to production."
+    },
+    "ai": {
+      "title": "AI & LLM Integration",
+      "description": "Integrating AI capabilities into applications using Claude API, MCP servers, and agentic workflows. From prompt engineering to building intelligent automation."
     }
   },
   "workProcess": {

@@ -11,7 +11,7 @@
   "hero": {
     "greeting": "Hi, ich bin",
     "roles": "Fullstack Software Engineer",
-    "subtitle": "Ich entwickle robuste, skalierbare Softwarelösungen — von Backend-APIs über schöne Frontends bis hin zu mobilen Apps.",
+    "subtitle": "Ich entwickle robuste, skalierbare Softwarelösungen — von Backend-APIs über schöne Frontends und mobile Apps bis hin zu KI-gestützten Integrationen.",
     "cta_contact": "Kontakt aufnehmen"
   },
   "about": {
@@ -35,18 +35,18 @@
       "database": "Datenbanken",
       "testing": "Testing",
       "cloud": "Cloud & DevOps",
-      "tool": "Tools"
+      "ai": "KI & LLM"
     }
   },
   "services": {
     "heading": "Leistungen",
     "subtitle": "Was ich für Sie tun kann.",
     "web": {
-      "title": "Webentwicklung",
+      "title": "Webanwendungen",
       "description": "Moderne, responsive Webanwendungen mit React, Next.js, Vaadin, Thymeleaf und Symfony. Von Landingpages bis hin zu komplexen Unternehmensportalen."
     },
     "mobile": {
-      "title": "Mobile Apps",
+      "title": "Mobile Anwendungen",
       "description": "Plattformübergreifende mobile Anwendungen mit Flutter und Dart. Schöne UIs mit nativer Performance für iOS und Android."
     },
     "backend": {
@@ -56,6 +56,10 @@
     "fullstack": {
       "title": "Fullstack Engineering",
       "description": "End-to-End-Lösungen von Frontend über Backend und Datenbank bis hin zum Deployment. Ich liefere komplette Produkte vom Konzept bis zur Produktion."
+    },
+    "ai": {
+      "title": "KI & LLM Integration",
+      "description": "Integration von KI-Funktionen in Anwendungen mit Claude API, MCP-Servern und agentischen Workflows. Von Prompt Engineering bis hin zu intelligenter Automatisierung."
     }
   },
   "workProcess": {

@@ -4,22 +4,24 @@ import { useTranslations } from "next-intl";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import SectionHeading from "./SectionHeading";
-import { FiMonitor, FiSmartphone, FiServer, FiLayers } from "react-icons/fi";
+import { FiMonitor, FiSmartphone, FiServer, FiLayers, FiCpu } from "react-icons/fi";
 
 const serviceIcons: Record<string, React.ElementType> = {
   web: FiMonitor,
   mobile: FiSmartphone,
   backend: FiServer,
   fullstack: FiLayers,
+  ai: FiCpu,
 };
 
-const serviceKeys = ["web", "mobile", "backend", "fullstack"] as const;
+const serviceKeys = ["web", "mobile", "backend", "ai", "fullstack"] as const;
 
 const accentColors = [
   { border: "border-primary/40", bg: "bg-primary/5", hoverGlow: "hover:shadow-primary/20", icon: "text-primary", number: "from-primary to-primary-dark" },
   { border: "border-secondary/40", bg: "bg-secondary/5", hoverGlow: "hover:shadow-secondary/20", icon: "text-secondary", number: "from-secondary to-purple-600" },
   { border: "border-accent/40", bg: "bg-accent/5", hoverGlow: "hover:shadow-accent/20", icon: "text-accent", number: "from-accent to-cyan-600" },
   { border: "border-primary/40", bg: "bg-primary/5", hoverGlow: "hover:shadow-primary/20", icon: "text-primary", number: "from-primary to-secondary" },
+  { border: "border-secondary/40", bg: "bg-secondary/5", hoverGlow: "hover:shadow-secondary/20", icon: "text-secondary", number: "from-secondary to-accent" },
 ];
 
 export default function Services() {
@@ -38,7 +40,7 @@ export default function Services() {
       <div className="max-w-6xl mx-auto relative z-10">
         <SectionHeading heading={t("heading")} subtitle={t("subtitle")} />
 
-        <div ref={ref} className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
+        <div ref={ref} className="flex flex-wrap justify-center gap-3 sm:gap-6">
           {serviceKeys.map((key, i) => {
             const colors = accentColors[i];
             const Icon = serviceIcons[key];
@@ -49,6 +51,7 @@ export default function Services() {
                 initial={{ opacity: 0, y: 50 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: 0.15 + i * 0.12, ease: "easeOut" }}
+                className="w-[calc(50%-0.375rem)] lg:w-[calc(33.333%-1rem)]"
               >
                 <div className={`group relative h-full p-4 sm:p-7 rounded-2xl bg-card border-2 ${colors.border} transition-all duration-300 hover:shadow-xl ${colors.hoverGlow} hover:-translate-y-2 hover:scale-[1.02]`}>
                   {/* Hover glow background */}

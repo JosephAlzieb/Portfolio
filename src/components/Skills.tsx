@@ -11,13 +11,15 @@ import {
 import {
   SiSpringboot, SiHtml5, SiCss, SiFlutter,
   SiVaadin, SiPostgresql, SiMariadb, SiMongodb,
-  SiGradle, SiApachemaven,
+  SiGradle, SiApachemaven, SiClaude, SiOpenai,
 } from "react-icons/si";
 import { VscAzure } from "react-icons/vsc";
 import { TbSql, TbApi, TbTestPipe, TbDeviceDesktopCheck } from "react-icons/tb";
 import { MdIntegrationInstructions } from "react-icons/md";
 import { GrTest } from "react-icons/gr";
 import { DiScrum } from "react-icons/di";
+import { BsRobot, BsChatDots } from "react-icons/bs";
+import { RiRobot2Line } from "react-icons/ri";
 import {
   HiOutlineCodeBracket,
   HiOutlineServerStack,
@@ -25,6 +27,7 @@ import {
   HiOutlineBeaker,
   HiOutlineWrenchScrewdriver,
   HiOutlineCloud,
+  HiOutlineCpuChip,
 } from "react-icons/hi2";
 
 /** Map skill icon identifiers to React icon components */
@@ -52,7 +55,13 @@ const iconMap: Record<string, React.ReactNode> = {
   maven: <SiApachemaven />,
   gradle: <SiGradle />,
   git: <FaGitAlt />,
-  scrum: <DiScrum />,
+  claude: <SiClaude />,
+  claudeapi: <SiClaude />,
+  mcp: <HiOutlineCpuChip />,
+  prompt: <BsChatDots />,
+  agents: <RiRobot2Line />,
+  embeddings: <HiOutlineCpuChip />,
+  openai: <SiOpenai />,
 };
 
 /** Category header icons */
@@ -63,6 +72,7 @@ const categoryIcons: Record<string, React.ReactNode> = {
   testing: <HiOutlineBeaker className="text-2xl" />,
   tool: <HiOutlineWrenchScrewdriver className="text-2xl" />,
   cloud: <HiOutlineCloud className="text-2xl" />,
+  ai: <HiOutlineCpuChip className="text-2xl" />,
 };
 
 const categoryColors: Record<string, { accent: string; glow: string; ring: string }> = {
@@ -72,9 +82,10 @@ const categoryColors: Record<string, { accent: string; glow: string; ring: strin
   testing: { accent: "text-primary", glow: "bg-primary/10", ring: "ring-primary/20" },
   tool: { accent: "text-secondary", glow: "bg-secondary/10", ring: "ring-secondary/20" },
   cloud: { accent: "text-accent", glow: "bg-accent/10", ring: "ring-accent/20" },
+  ai: { accent: "text-primary", glow: "bg-primary/10", ring: "ring-primary/20" },
 };
 
-const categories = ["frontend", "backend", "database", "testing", "tool", "cloud"] as const;
+const categories = ["ai", "frontend", "backend", "database", "testing", "cloud"] as const;
 
 /** Individual skill chip — hexagonal-inspired with glow on hover */
 function SkillChip({ skill, index }: { skill: Skill; index: number }) {

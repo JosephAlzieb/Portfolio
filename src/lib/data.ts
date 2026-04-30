@@ -36,7 +36,7 @@ export const spokenLanguages = [
 export type Skill = {
   name: string;
   icon: string;
-  category: "backend" | "frontend" | "database" | "testing" | "cloud" | "tool";
+  category: "backend" | "frontend" | "database" | "testing" | "cloud" | "ai";
 };
 
 export const skills: Skill[] = [
@@ -45,6 +45,8 @@ export const skills: Skill[] = [
   { name: "Spring Boot", icon: "spring", category: "backend" },
   { name: "RESTful API", icon: "rest", category: "backend" },
   { name: "gRPC", icon: "grpc", category: "backend" },
+  { name: "Gradle", icon: "gradle", category: "backend" },
+  { name: "Maven", icon: "maven", category: "backend" },
 
   // Frontend
   { name: "Vaadin", icon: "vaadin", category: "frontend" },
@@ -52,6 +54,7 @@ export const skills: Skill[] = [
   { name: "HTML", icon: "html5", category: "frontend" },
   { name: "CSS", icon: "css3", category: "frontend" },
   { name: "Flutter", icon: "flutter", category: "frontend" },
+  { name: "Thymeleaf", icon: "thymeleaf", category: "frontend" },
 
   // Database
   { name: "SQL", icon: "sql", category: "database" },
@@ -67,14 +70,17 @@ export const skills: Skill[] = [
 
   // Cloud & DevOps
   { name: "Microsoft Azure", icon: "azure", category: "cloud" },
+  { name: "Docker", icon: "docker", category: "cloud" },
+  { name: "Git", icon: "git", category: "cloud" },
 
-
-  // Tools
-  { name: "Docker", icon: "docker", category: "tool" },
-  { name: "Gradle", icon: "gradle", category: "tool" },
-  { name: "Maven", icon: "maven", category: "tool" },
-  { name: "Git", icon: "git", category: "tool" },
-  { name: "Scrum", icon: "scrum", category: "tool" },
+  // AI & LLM
+  { name: "Claude", icon: "claude", category: "ai" },
+  { name: "Claude API", icon: "claudeapi", category: "ai" },
+  { name: "MCP", icon: "mcp", category: "ai" },
+  { name: "Prompt Engineering", icon: "prompt", category: "ai" },
+  { name: "AI Agents", icon: "agents", category: "ai" },
+  { name: "Embeddings", icon: "embeddings", category: "ai" },
+  { name: "OpenAI", icon: "openai", category: "ai" },
 ];
 
 // ─── Projects ────────────────────────────────────────────────────────────────
@@ -141,6 +147,12 @@ export const certifications: Certification[] = [
     issuer: "Anthropic Education",
     date: "Apr 2026",
     credentialUrl: "https://verify.skilljar.com/c/hsbxy736i9cx",
+  },
+  {
+    name: "Claude with Google Cloud's Vertex AI",
+    issuer: "Anthropic Education",
+    date: "Apr 2026",
+    credentialUrl: "https://verify.skilljar.com/c/csap2obxvcca",
   },
   {
     name: "Introduction to Subagents",
