@@ -44,7 +44,7 @@ export default function Hero() {
     : { scale: 1 };
 
   return (
-    <section ref={sectionRef} className="relative min-h-screen flex items-center px-4 overflow-hidden">
+    <section ref={sectionRef} className="relative min-h-[100svh] flex items-center px-4 pt-20 pb-10 overflow-hidden">
       {/* Background gradient orbs — reduced blur on mobile */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
@@ -92,7 +92,7 @@ export default function Hero() {
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.3, duration: 0.6 }}
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold mb-4 gradient-text leading-[1.05] tracking-tight"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold mb-4 gradient-text leading-[1.05] tracking-tight"
             >
               {personalInfo.name}
             </motion.h1>
@@ -170,7 +170,7 @@ export default function Hero() {
               width={200}
               height={200}
               priority
-              className="relative w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 rounded-full border-2 border-card-border shadow-2xl shadow-primary/10 object-cover"
+              className="relative w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 rounded-full border-2 border-card-border shadow-2xl shadow-primary/10 object-cover"
             />
           </motion.div>
         </div>

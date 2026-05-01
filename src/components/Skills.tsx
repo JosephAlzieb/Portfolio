@@ -11,15 +11,17 @@ import {
 import {
   SiSpringboot, SiHtml5, SiCss, SiFlutter,
   SiVaadin, SiPostgresql, SiMariadb, SiMongodb,
-  SiGradle, SiApachemaven, SiClaude, SiOpenai,
+  SiGradle, SiApachemaven, SiClaude,
 } from "react-icons/si";
 import { VscAzure } from "react-icons/vsc";
 import { TbSql, TbApi, TbTestPipe, TbDeviceDesktopCheck } from "react-icons/tb";
 import { MdIntegrationInstructions } from "react-icons/md";
 import { GrTest } from "react-icons/gr";
 import { DiScrum } from "react-icons/di";
-import { BsRobot, BsChatDots } from "react-icons/bs";
-import { RiRobot2Line } from "react-icons/ri";
+import { BsRobot, BsChatDots, BsDiagram3 } from "react-icons/bs";
+import { RiRobot2Line, RiFlowChart } from "react-icons/ri";
+import { GoChecklist } from "react-icons/go";
+import { PiDatabase } from "react-icons/pi";
 import {
   HiOutlineCodeBracket,
   HiOutlineServerStack,
@@ -60,8 +62,10 @@ const iconMap: Record<string, React.ReactNode> = {
   mcp: <HiOutlineCpuChip />,
   prompt: <BsChatDots />,
   agents: <RiRobot2Line />,
-  embeddings: <HiOutlineCpuChip />,
-  openai: <SiOpenai />,
+  genai: <BsRobot />,
+  rag: <PiDatabase />,
+  aiworkflow: <RiFlowChart />,
+  prompteval: <GoChecklist />,
 };
 
 /** Category header icons */
