@@ -20,7 +20,7 @@ export const personalInfo = {
 
 export const socialLinks = {
   github: "https://github.com/JosephAlzieb",
-  linkedin: "https://www.linkedin.com/in/joseph-alzieb-573092220/",
+  linkedin: "https://www.linkedin.com/in/joseph-alzieb",
 } as const;
 
 // ─── Languages (spoken) ─────────────────────────────────────────────────────
